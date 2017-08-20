@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.github.zdsiyan</groupId>
+	<artifactId>slowspider</artifactId>
+	<version>0.5.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>slowspider</name>
+	<description>A htmlunit spider</description>
+
+	<properties>
+		<Markdown2Pdf.version>2.0.1</Markdown2Pdf.version>
+		<lombok.version>1.16.16</lombok.version>
+		<htmlunit.version>2.23</htmlunit.version>
+		<dom4j.version>2.0.1</dom4j.version>
+		<fastjson.version>1.2.35</fastjson.version>
+		<css-selectors.version>2.0</css-selectors.version>
+		<!-- JVM params for test execution -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<argLine>-Duser.language=en</argLine>
+		<java.version>1.8</java.version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.testSource>1.8</maven.compiler.testSource>
+		<maven.compiler.testTarget>1.8</maven.compiler.testTarget>
+	</properties>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>net.sourceforge.htmlunit</groupId>
+			<artifactId>htmlunit-core-js</artifactId>
+			<version>${htmlunit.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sourceforge.htmlunit</groupId>
+			<artifactId>htmlunit</artifactId>
+			<version>${htmlunit.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>eu.de-swaef.pdf</groupId>
+			<artifactId>Markdown2Pdf</artifactId>
+			<version>${Markdown2Pdf.version}</version>
+		</dependency>
+		
+		<dependency>
+            <groupId>org.xhtmlrenderer</groupId>
+            <artifactId>flying-saucer-pdf</artifactId>
+            <version>9.1.1</version>
+        </dependency>
+
+		<!-- <dependency>
+			<groupId>org.xhtmlrenderer</groupId>
+			<artifactId>core-renderer</artifactId>
+			<version>8.0</version>
+		</dependency> -->
+
+
+		<dependency>
+			<groupId>org.dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>${dom4j.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>${fastjson.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>se.fishtank</groupId>
+			<artifactId>css-selectors</artifactId>
+			<version>${css-selectors.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+		</dependency>
+
+	</dependencies>
+</project>
