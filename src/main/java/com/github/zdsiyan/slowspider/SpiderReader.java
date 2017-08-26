@@ -8,7 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import com.github.zdsiyan.slowspider.config.BookConfig;
+import com.github.zdsiyan.slowspider.config.NodeConfig;
 import com.github.zdsiyan.slowspider.config.GlobalConfig;
 import com.github.zdsiyan.slowspider.model.Book;
 import com.github.zdsiyan.slowspider.model.Chapter;
@@ -22,7 +22,7 @@ public abstract class SpiderReader extends AbstractReader{
 		super(gc);
 	}
 	
-	public SpiderReader(BookConfig bc){
+	public SpiderReader(NodeConfig bc){
 		super(new GlobalConfig(bc));
 	}
 	
@@ -34,12 +34,12 @@ public abstract class SpiderReader extends AbstractReader{
 	
 	public Book run(){
 		Book book = init();
-		gc.getBookConfig().forEach(bc->readBook(bc, book));
+		gc.getNodeConfig().forEach(bc->readBook(bc, book));
 		
 		return book;
 	}
 	
-	protected void readBook(final BookConfig bc, final Book book){
+	protected void readBook(final NodeConfig bc, final Book book){
 		if(bc.hasLink()==false){
 			return;
 		}
@@ -77,11 +77,11 @@ public abstract class SpiderReader extends AbstractReader{
 		}
 	}
 
-	protected abstract boolean before(final String link, final BookConfig bc, final Book book);
+	protected abstract boolean before(final String link, final NodeConfig bc, final Book book);
 	
-	protected abstract boolean after(final HtmlPage page, final String link, final BookConfig bc, final Book book);
+	protected abstract boolean after(final HtmlPage page, final String link, final NodeConfig bc, final Book book);
 	
-	protected void readChapter(final HtmlPage page, final String link, final BookConfig bc, final Book book){
+	protected void readChapter(final HtmlPage page, final String link, final NodeConfig bc, final Book book){
 		if(StringUtils.isBlank(link) ){
 			return;
 		}

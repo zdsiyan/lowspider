@@ -8,7 +8,7 @@ import org.w3c.dom.Node;
 import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.html.DomNode;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import com.github.zdsiyan.slowspider.config.BookConfig;
+import com.github.zdsiyan.slowspider.config.NodeConfig;
 import com.github.zdsiyan.slowspider.config.GlobalConfig;
 
 import se.fishtank.css.selectors.Selectors;
@@ -24,7 +24,7 @@ public abstract class AbstractReader {
 		this.gc = gc;
 	}
 	
-	protected BrowserVersion getBrowser(final BookConfig bc){
+	protected BrowserVersion getBrowser(final NodeConfig bc){
 		if(bc.hasBrowser()){
 			//BrowserVersion.
 		}
@@ -35,7 +35,7 @@ public abstract class AbstractReader {
 		
 	}
 	
-	protected boolean getCss(final BookConfig bc){
+	protected boolean getCss(final NodeConfig bc){
 		if(bc.getCss()!=null){
 			return bc.getCss();
 		}
@@ -46,7 +46,7 @@ public abstract class AbstractReader {
 		
 	}
 	
-	protected boolean getJs(final BookConfig bc){
+	protected boolean getJs(final NodeConfig bc){
 		if(bc.getJavascript()!=null){
 			return bc.getJavascript();
 		}
@@ -58,7 +58,7 @@ public abstract class AbstractReader {
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	protected List<String> getLinks(final HtmlPage page, final BookConfig bc){
+	protected List<String> getLinks(final HtmlPage page, final NodeConfig bc){
 		List<String> result = new ArrayList<String>();
 		if(bc.getLinks().hasCss()){
 			Selectors selectors = new Selectors(new W3CNode(page.getDocumentElement()));

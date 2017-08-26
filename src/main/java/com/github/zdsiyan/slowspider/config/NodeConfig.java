@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper=true)
-public class BookConfig extends BaseConfig {
+public class NodeConfig extends BaseConfig {
 	// bookname
 	protected String name;
 	// author

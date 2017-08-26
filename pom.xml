@@ -11,7 +11,7 @@
 	<description>A htmlunit spider</description>
 
 	<properties>
-		<Markdown2Pdf.version>2.0.1</Markdown2Pdf.version>
+		<freemarker.version>2.3.25-incubating</freemarker.version>
 		<lombok.version>1.16.16</lombok.version>
 		<htmlunit.version>2.23</htmlunit.version>
 		<dom4j.version>2.0.1</dom4j.version>
@@ -29,6 +29,7 @@
 
 	<dependencies>
 
+		<!-- htmlunit spider -->
 		<dependency>
 			<groupId>net.sourceforge.htmlunit</groupId>
 			<artifactId>htmlunit-core-js</artifactId>
@@ -41,43 +42,41 @@
 			<version>${htmlunit.version}</version>
 		</dependency>
 
+		<!-- markdown2html -->
 		<dependency>
-			<groupId>eu.de-swaef.pdf</groupId>
-			<artifactId>Markdown2Pdf</artifactId>
-			<version>${Markdown2Pdf.version}</version>
+			<groupId>io.github.gitbucket</groupId>
+			<artifactId>markedj</artifactId>
+			<version>1.0.13</version>
 		</dependency>
-		
-		<dependency>
-            <groupId>org.xhtmlrenderer</groupId>
-            <artifactId>flying-saucer-pdf</artifactId>
-            <version>9.1.1</version>
-        </dependency>
 
-		<!-- <dependency>
-			<groupId>org.xhtmlrenderer</groupId>
-			<artifactId>core-renderer</artifactId>
-			<version>8.0</version>
-		</dependency> -->
-
-
+		<!-- dom4j -->
 		<dependency>
 			<groupId>org.dom4j</groupId>
 			<artifactId>dom4j</artifactId>
 			<version>${dom4j.version}</version>
 		</dependency>
 
+		<!-- fastjson -->
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
 			<version>${fastjson.version}</version>
 		</dependency>
 
+		<!-- css query -->
 		<dependency>
 			<groupId>se.fishtank</groupId>
 			<artifactId>css-selectors</artifactId>
 			<version>${css-selectors.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>${freemarker.version}</version>
+		</dependency>
+
+		<!-- lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>

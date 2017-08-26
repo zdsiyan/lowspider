@@ -5,30 +5,29 @@ import java.io.IOException;
 
 import com.github.zdsiyan.slowspider.config.GlobalConfig;
 import com.github.zdsiyan.slowspider.model.Book;
-import com.qkyrie.markdown2pdf.Markdown2PdfConverter;
+
+import io.github.gitbucket.markedj.Marked;
 
 /**
  * pdf writer.
  * 
  * @author zdsiyan
  */
-public class SpiderPdfWriter extends AbstractWriter {
+public class SpiderPdfWriter extends AbstractWriter{
 
 	public SpiderPdfWriter(GlobalConfig gc, Book book) {
 		super(gc, book);
 	}
 
-	public FileOutputStream write() throws IOException {
-		FileOutputStream fos = new FileOutputStream("abc.pdf");
+	public FileOutputStream write() throws IOException{
+		FileOutputStream fos = new FileOutputStream("abc.html");
 		
-		Markdown2PdfConverter markdown2PdfConverter =
-                Markdown2PdfConverter.newConverter();
+		//book 2 html
+		String result = Marked.marked("***中文***");
 		
-		markdown2PdfConverter.readFrom(() -> "***Test***");
-
+		fos.write(result.getBytes("UTF-8"));
+		
 		System.out.println("PDF Created!");
-
 		return fos;
 	}
-
 }

@@ -14,15 +14,15 @@ import lombok.EqualsAndHashCode;
 public class GlobalConfig extends BaseConfig{
 	// name
 	protected String name;
-	protected List<BookConfig> bookConfig;
+	protected List<NodeConfig> nodeConfig;
 	
 	public GlobalConfig(){
-		bookConfig = new ArrayList<BookConfig>();
+		nodeConfig = new ArrayList<NodeConfig>();
 	}
 	
-	public GlobalConfig(BookConfig bc){
+	public GlobalConfig(NodeConfig bc){
 		this();
-		bookConfig.add(bc);
+		nodeConfig.add(bc);
 	}
 	
 }

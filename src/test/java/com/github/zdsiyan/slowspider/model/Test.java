@@ -1,8 +1,6 @@
 package com.github.zdsiyan.slowspider.model;
 
-import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,21 +9,16 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.github.zdsiyan.slowspider.SpiderPdfWriter;
 import com.github.zdsiyan.slowspider.SpiderReader;
-import com.github.zdsiyan.slowspider.config.BookConfig;
 import com.github.zdsiyan.slowspider.config.GlobalConfig;
+import com.github.zdsiyan.slowspider.config.NodeConfig;
 import com.github.zdsiyan.slowspider.config.QueryConfig;
-import com.qkyrie.markdown2pdf.Markdown2PdfConverter;
-import com.qkyrie.markdown2pdf.internal.exceptions.ConversionException;
-import com.qkyrie.markdown2pdf.internal.exceptions.Markdown2PdfLogicException;
-import com.qkyrie.markdown2pdf.internal.reading.SimpleStringMarkdown2PdfReader;
-import com.qkyrie.markdown2pdf.internal.writing.SimpleFileMarkdown2PdfWriter;
 
 public class Test {
 	
 	private static GlobalConfig init(){
-		BookConfig bc = new BookConfig();
-		bc.setLink("http://localhost:8080/");
-		bc.setName("少年医仙");
+		NodeConfig nc = new NodeConfig();
+		nc.setLink("http://localhost:8080/");
+		nc.setName("少年医仙");
 		//QueryConfig link = new QueryConfig();
 		QueryConfig content = new QueryConfig();
 		content.setXpath("html/body/text()");
@@ -34,7 +27,7 @@ public class Test {
 		replaceContent.put("\\{\\}","");
 		content.setReplace(replaceContent);
 		
-		bc.setContent(content);
+		nc.setContent(content);
 		
 		
 		QueryConfig title = new QueryConfig();
@@ -44,10 +37,10 @@ public class Test {
 		replaceTitle.put("正文","");
 		title.setReplace(replaceTitle);
 		
-		bc.setTitle(title);
+		nc.setTitle(title);
 		
 		
-		GlobalConfig gc = new GlobalConfig(bc);
+		GlobalConfig gc = new GlobalConfig(nc);
 		gc.setName("我的阅读日常");
 		
 		return gc;
@@ -55,7 +48,7 @@ public class Test {
 	
 	
 	private static GlobalConfig initList(){
-		BookConfig bc = new BookConfig();
+		NodeConfig bc = new NodeConfig();
 		bc.setLink("http://localhost:8080/list");
 		bc.setName("少年医仙");
 		bc.setSite("http://www.piaotian.com/html/8/8755/");
@@ -91,21 +84,20 @@ public class Test {
 		return gc;
 	}
 	
-	private static void read(){
+	private static void doit() throws Exception{
 		GlobalConfig gc = init();
 		
 		
 		SerializerFeature[] features = {SerializerFeature.WriteDateUseDateFormat,SerializerFeature.PrettyFormat};
-		String config = JSONObject.toJSONString(gc,features);
-		
-		System.out.println(config);
+		//String config = JSONObject.toJSONString(gc,features);
+		//System.out.println(config);
 		
 		SpiderReader reader = new SpiderReader(gc){
-			protected boolean before(final String link, final BookConfig bc, final Book book){
+			protected boolean before(final String link, final NodeConfig bc, final Book book){
 				return true;
 			}
 			
-			protected boolean after(final HtmlPage page, final String link, final BookConfig bc, final Book book){
+			protected boolean after(final HtmlPage page, final String link, final NodeConfig bc, final Book book){
 				return true;
 			}
 		};
@@ -114,25 +106,34 @@ public class Test {
 		System.out.println("**********************************");
 		
 		String result = JSONObject.toJSONString(book,features);
-		System.out.println(result);
-		
+		//System.out.println(result);
+
 		SpiderPdfWriter writer = new SpiderPdfWriter(gc, book);
-		try {
-			FileOutputStream fos = writer.write();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		FileOutputStream fos = writer.write();
+		fos.flush();
+		fos.close();
+		
 	}
 	
 	
-	public static void main(String[] args) throws ConversionException, Markdown2PdfLogicException {
-		//read();
-		
+	public static void main(String[] args) throws Exception {
+		doit();
+		/*
 		Markdown2PdfConverter
         .newConverter()
-        .readFrom(new SimpleStringMarkdown2PdfReader("***Test***"))
+        .readFrom(new SimpleStringMarkdown2PdfReader("&#20013;&#21326;&#20154;&#27665;"))
         .writeTo(new SimpleFileMarkdown2PdfWriter(new File("abc.pdf")))
         .doIt();
+		
+		 * SimpleFileMarkdown2PdfWriter
+		 * Markdown2PdfConverter
+        .newConverter()
+        .readFrom(new SimpleStringMarkdown2PdfReader(markdown))
+        .writeTo(new SpiderPdfWriter(new File("abc.pdf", )))
+        .doIt();*/
+		
+		/*String html1 = Marked.marked("***中文***");
+		System.out.println(html1);*/
+		
 	}
 }
