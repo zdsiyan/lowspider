@@ -1,7 +1,5 @@
 package com.github.zdsiyan.slowspider.config;
 
-import java.util.Map;
-
 import org.apache.commons.lang3.StringUtils;
 
 import lombok.Data;

@@ -14,6 +14,8 @@ public class Chapter implements Serializable{
 	protected String link;
 	
 	protected String title;
+
+	protected String author;
 	
 	protected String content;
 	

@@ -7,7 +7,7 @@ import java.util.Map;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import com.github.zdsiyan.slowspider.SpiderPdfWriter;
+import com.github.zdsiyan.slowspider.SpiderHtmlWriter;
 import com.github.zdsiyan.slowspider.SpiderReader;
 import com.github.zdsiyan.slowspider.config.GlobalConfig;
 import com.github.zdsiyan.slowspider.config.NodeConfig;
@@ -108,7 +108,7 @@ public class Test {
 		String result = JSONObject.toJSONString(book,features);
 		//System.out.println(result);
 
-		SpiderPdfWriter writer = new SpiderPdfWriter(gc, book);
+		SpiderHtmlWriter writer = new SpiderHtmlWriter(gc, book);
 		FileOutputStream fos = writer.write();
 		fos.flush();
 		fos.close();

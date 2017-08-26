@@ -12,6 +12,7 @@ import com.github.zdsiyan.slowspider.config.NodeConfig;
 import com.github.zdsiyan.slowspider.config.GlobalConfig;
 import com.github.zdsiyan.slowspider.model.Book;
 import com.github.zdsiyan.slowspider.model.Chapter;
+import com.github.zdsiyan.slowspider.util.SlowspiderUtil;
 
 /**
  * @author zdsiyan
@@ -88,7 +89,7 @@ public abstract class SpiderReader extends AbstractReader{
 		
 		Chapter chapter = new Chapter();
 		chapter.setLink(link);
-		chapter.setContent(SlowspiderUtil.getText(page, bc.getContent()));
+		chapter.setContent(SlowspiderUtil.getText(page, bc.getContent(), "\n\n"));
 		chapter.setTitle(SlowspiderUtil.getText(page, bc.getTitle()));
 		chapter.setTimeline(SlowspiderUtil.getText(page, bc.getTimeline()));
 		book.addChapter(chapter);

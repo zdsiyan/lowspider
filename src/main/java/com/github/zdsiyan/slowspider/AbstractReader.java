@@ -9,6 +9,7 @@ import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.html.DomNode;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.github.zdsiyan.slowspider.config.NodeConfig;
+import com.github.zdsiyan.slowspider.util.SlowspiderUtil;
 import com.github.zdsiyan.slowspider.config.GlobalConfig;
 
 import se.fishtank.css.selectors.Selectors;
