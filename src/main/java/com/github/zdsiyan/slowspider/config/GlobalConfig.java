@@ -14,6 +14,7 @@ import lombok.EqualsAndHashCode;
 public class GlobalConfig extends BaseConfig{
 	// name
 	protected String name;
+	protected EmailConfig email;
 	protected List<NodeConfig> nodeConfig;
 	
 	public GlobalConfig(){

@@ -42,13 +42,25 @@
 			<version>${htmlunit.version}</version>
 		</dependency>
 
+		<!-- mail -->
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.6.0</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>javax.mail-api</artifactId>
+			<version>1.6.0</version>
+		</dependency>
+
 		<!-- markdown2html -->
 		<dependency>
 			<groupId>io.github.gitbucket</groupId>
 			<artifactId>markedj</artifactId>
 			<version>1.0.13</version>
 		</dependency>
-		
+
 		<!-- dom4j -->
 		<dependency>
 			<groupId>org.dom4j</groupId>
@@ -70,6 +82,7 @@
 			<version>${css-selectors.version}</version>
 		</dependency>
 
+		<!-- freemarker -->
 		<dependency>
 			<groupId>org.freemarker</groupId>
 			<artifactId>freemarker</artifactId>

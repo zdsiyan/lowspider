@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>${book.title}</title>
+<title>${global.name}</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <head>
 <body>

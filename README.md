@@ -4,16 +4,62 @@
 
 ## 1. 迭代计划
 
-* 爬全本测试
-* mail发送测试
-* 爬部分链接测试
 * css query测试
 * 正则解析测试
 * 定制模板测试
+* 处理bug， 去掉多余的配置， 重构优化
+* 建引用模式测试
+
 
 
 ## 2. 已完成
 
 * 2017-8-26 传入markdown模板+freemarker变量的形式, 方便自组织布局
+* 2017-9-2 测试完爬全本,部分链接。 默认的模板美感差一些, 以后支持定制, 就不要吐槽了吧
+* 2017-9-3 mail数据流发送测试完毕
 
 
+## 3. 配置示例， 转json呈现
+
+```
+
+	{
+		"email":{
+			"auth":true,
+			"enable":true,
+			"required":true,
+			"filename":"我的阅读日常.html",
+			"from":"你的邮箱地址",
+			"host":"smtp.163.com",
+			"username":"你的邮箱名（无需@）",
+			"password":"你的邮箱密码",
+			"title":"我的阅读日常",
+			"to":"你的目标邮箱地址"
+		},
+		"name":"我的阅读日常",
+		"nodeConfig":[
+			{
+				"content":{
+					"replace":{
+						"飘天文学感谢各位书友的支持，您的支持就是我们最大的动力":"",
+						"\\{\\}":""
+					},
+					"xpath":"html/body/text()"
+				},
+				"link":"http://www.piaotian.com/html/8/8755/",
+				"links":{
+					"xpath":"//div[@class='centent']//a"
+				},
+				"name":"少年医仙",
+				"site":"http://www.piaotian.com/html/8/8755/",
+				"title":{
+					"replace":{
+						"正文":""
+					},
+					"xpath":"html/body/h1/text()"
+				}
+			}
+		]
+	}
+	
+```
